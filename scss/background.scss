@@ -1,0 +1,46 @@
+#background {
+  position: fixed;
+  z-index: -2;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  .circle {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(1.5rem);
+    animation: spin 15s linear infinite;
+  }
+  #circle_top {
+    background: rgb(255, 238, 147);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 238, 147, 1) 35%,
+      rgba(255, 191, 159, 1) 100%
+    );
+    top: -200px;
+    right: -200px;
+  }
+  #circle_bottom {
+    background: rgb(101, 176, 226);
+    background: linear-gradient(
+      90deg,
+      rgba(101, 176, 226, 1) 35%,
+      rgba(173, 247, 182, 1) 100%
+    );
+    bottom: -200px;
+    left: -200px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
