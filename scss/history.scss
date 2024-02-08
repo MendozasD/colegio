@@ -1,0 +1,34 @@
+#history_container,
+#mision_container,
+#news_container {
+  padding: 100px 2rem 0 2rem;
+  height: 100svh;
+}
+
+#history_container {
+  z-index: 3;
+  position: relative;
+  inset: 0;
+  p {
+    text-align: justify;
+  }
+}
+
+#mision_container {
+  display: flex;
+  gap: 2rem;
+  .mision_column {
+    text-align: justify;
+    width: 50%;
+    height: fit-content;
+  }
+}
+
+@media all and (max-width: 500px) {
+  #mision_container {
+    flex-direction: column;
+    .mision_column {
+      width: auto;
+    }
+  }
+}

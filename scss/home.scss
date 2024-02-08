@@ -1,7 +1,9 @@
 #home_container {
+  z-index: 4;
+  width: 98vw;
   display: flex;
-  width: 100vw;
   align-items: center;
+  height: 100svh;
 }
 
 #home_title {
@@ -43,11 +45,6 @@
       rotate: -5deg;
     }
   }
-}
-
-.italic {
-  font-style: italic;
-  font-family: var(--telma);
 }
 
 @media all and (max-width: 500px) {
