@@ -1,7 +1,7 @@
 :root {
   --blue: #65b0e2;
   --green: #adf7b6;
-  --beige: #fcf5c7;
+  --beige: #fffce9;
   --yellow: #ffee93;
   --red: #ffbf9f;
   --gray: rgb(113, 113, 113);
@@ -48,6 +48,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  gap: 100px;
 }
 
 .title {

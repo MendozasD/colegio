@@ -54,6 +54,7 @@ const menu = document.querySelector("#menu");
 const btnClose = document.querySelector("#btn_close_menu");
 const navLinks = document.querySelectorAll(".nav_link");
 const btnMenu = document.querySelector("#btn_menu");
+const display = getComputedStyle(btnMenu).display;
 
 btnMenu.addEventListener("click", () => {
   menu.style.display = "grid";
@@ -89,7 +90,11 @@ navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     menu.style.borderRadius = "0 0 200px 200px";
     setTimeout(() => {
-      menu.style.transform = "translateY(-100%)";
+      display === "none"
+        ? (menu.style.transform = "translateY(0)")
+        : (menu.style.transform = "translateY(-100%)");
     }, 400);
   });
 });
+
+console.log(display);
