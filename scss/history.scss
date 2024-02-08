@@ -9,8 +9,27 @@
   z-index: 3;
   position: relative;
   inset: 0;
+  margin-bottom: 130px;
   p {
     text-align: justify;
+  }
+  #calendar {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    .year {
+      display: flex;
+      flex-direction: column;
+      .pencil {
+        position: absolute;
+        bottom: 10px;
+        width: 85px;
+        margin: 0 auto;
+      }
+    }
   }
 }
 
@@ -18,10 +37,21 @@
   display: flex;
   gap: 2rem;
   .mision_column {
+    position: relative;
     text-align: justify;
     width: 50%;
     height: fit-content;
   }
+}
+
+#coming_soon {
+  width: 50%;
+  border-radius: 30px;
+  text-align: center;
+  margin: 10% auto;
+  padding: 40px 0;
+  background-color: var(--green);
+  box-shadow: var(--red) 2px 2px 20px;
 }
 
 @media all and (max-width: 500px) {
@@ -31,4 +61,19 @@
       width: auto;
     }
   }
+  #coming_soon {
+    min-width: 100%;
+    margin: 30% auto;
+  }
+  #news_container {
+    margin-top: 100px;
+  }
+}
+
+.star {
+  position: absolute;
+  width: 85px;
+  right: -20px;
+  top: -20px;
+  animation: spin 15s linear infinite;
 }

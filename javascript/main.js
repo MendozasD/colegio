@@ -28,10 +28,21 @@ document.querySelector("#app").innerHTML = `
       </br>
       </br>
       <span class="italic">Rectora: Dra. Silvia Sierra Calvo</span></p>
+      <div id="calendar">
+        <div class="year">
+          <h1>1990</h1>
+          <img class="pencil" src="./assets/pencil.png">
+        </div>
+        <div class="year">
+          <h1>2024</h1>
+          <img class="pencil" src="./assets/pencil.png">
+        </div>
+      </div>
     </div>
   </div>
   <div id="mision_container" class="commom_container">
     <div class="mision_column wrapper">
+      <img class="star" src="/assets/star.png" alt="star" />
       <h1 class="title">Misión</h1>
       <p>Plantea como Misión Educativa, hacer una institución que brinde un servicio educativo de calidad, proyectado a una educación basada en valores, impulsando un aprendizaje holístico; propiciando un clima de armonía y democracia, con un equilibrio en el desarrollo de la inteligencia emocional y una comunicación de empatía.</p>
     </div>
@@ -42,8 +53,12 @@ document.querySelector("#app").innerHTML = `
   </div>
   <div id="news_container" class="commom_container">
     <h1 class="title">Noticias</h1>
-    <div class="news_card">
-      <h1 class="news_title">En Construcción</h1>
+    <div id="coming_soon">
+      <h2>EN CONSTRUCCIÓN</h2>
+      <p>
+        Aquí encontrará pronto todas las noticas relacionadas con nuestra
+        institución.
+      </p>
     </div>
   </div>
 `;

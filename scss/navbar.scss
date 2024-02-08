@@ -31,14 +31,25 @@
     padding: 0 1rem 0 0;
     transition: all ease 0.5s;
     .nav_link {
+      font-family: var(--clash);
       transition: transform ease 300ms;
       transform: translateY(-100%);
       font-size: 1.2rem;
       font-weight: 500;
       color: var(--gray);
       text-decoration: none;
-      &:hover {
-        color: #646cff;
+      &::after {
+        content: "";
+        display: block;
+        width: 0%;
+        height: 5px;
+        background-color: var(--blue);
+        transition: width 0.3s;
+        margin: 0 auto;
+        border-radius: 30px;
+      }
+      &:hover::after {
+        width: 100%;
       }
     }
   }
@@ -66,9 +77,6 @@
         color: #fff;
         text-decoration: none;
         margin: auto;
-        &:hover {
-          color: #646cff;
-        }
       }
       #btn_close_menu {
         position: absolute;
