@@ -17,8 +17,8 @@ document.querySelector("#app").innerHTML = `
       <p id="title">Colegio Jesús </br> de Nazareth</h1>
     </div>
     <div id="home_img">
-      <img src="./assets/home_pic_1.jpg" class="home_pic" alt="Home Image" />
-      <img src="./assets/home_pic_2.jpg" class="home_pic" alt="Home Image" />
+      <img src="./home_pic_1.jpg" class="home_pic" alt="Home Image" />
+      <img src="./home_pic_2.jpg" class="home_pic" alt="Home Image" />
     </div>
   </div>
   <div id="history_container" class="commom_container">
@@ -31,18 +31,18 @@ document.querySelector("#app").innerHTML = `
       <div id="calendar">
         <div class="year">
           <h1>1990</h1>
-          <img class="pencil" src="./assets/pencil.png">
+          <img class="pencil" src="./pencil.png">
         </div>
         <div class="year">
           <h1>2024</h1>
-          <img class="pencil" src="./assets/pencil.png">
+          <img class="pencil" src="./pencil.png">
         </div>
       </div>
     </div>
   </div>
   <div id="mision_container" class="commom_container">
     <div class="mision_column wrapper">
-      <img class="star" src="./assets/star.png" alt="star" />
+      <img class="star" src="./star.png" alt="star" />
       <h1 class="title">Misión</h1>
       <p>Plantea como Misión Educativa, hacer una institución que brinde un servicio educativo de calidad, proyectado a una educación basada en valores, impulsando un aprendizaje holístico; propiciando un clima de armonía y democracia, con un equilibrio en el desarrollo de la inteligencia emocional y una comunicación de empatía.</p>
     </div>
