@@ -1,7 +1,7 @@
 export function navbar(a) {
   a.innerHTML += `<nav id="navbar">
   <a id="logo_container" href="#home_container">
-    <img src="/assets/logo_no_bg.png" id="logo" alt="Logo" />
+    <img src="./assets/logo_no_bg.png" id="logo" alt="Logo" />
     <p id="logo_title">Colegio </br> Jesús de </br> Nazareth</p>
   </a>
   <section id="menu">
@@ -13,7 +13,7 @@ export function navbar(a) {
         close_small
       </span>
     </div>
-    <img src="/assets/rainbow.png" id="rainbow" alt="rainbow" />
+    <img src="./assets/rainbow.png" id="rainbow" alt="rainbow" />
   </section>
   <div id="btn_menu">
     <span class="material-symbols-outlined">menu</span>

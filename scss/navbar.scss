@@ -30,6 +30,12 @@
     gap: 1rem;
     padding: 0 1rem 0 0;
     transition: all ease 0.5s;
+    #btn_close_menu {
+      display: none;
+    }
+    #rainbow {
+      display: none;
+    }
     .nav_link {
       font-family: var(--clash);
       transition: transform ease 300ms;
@@ -99,6 +105,7 @@
         }
       }
       #rainbow {
+        display: inline;
         z-index: -1;
         position: absolute;
         height: 350px;
