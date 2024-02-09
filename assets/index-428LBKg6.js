@@ -1,6 +1,6 @@
-(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))c(e);new MutationObserver(e=>{for(const a of e)if(a.type==="childList")for(const r of a.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&c(r)}).observe(document,{childList:!0,subtree:!0});function t(e){const a={};return e.integrity&&(a.integrity=e.integrity),e.referrerPolicy&&(a.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?a.credentials="include":e.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function c(e){if(e.ep)return;e.ep=!0;const a=t(e);fetch(e.href,a)}})();function l(s){s.innerHTML+=`<nav id="navbar">
+(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))c(e);new MutationObserver(e=>{for(const a of e)if(a.type==="childList")for(const r of a.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&c(r)}).observe(document,{childList:!0,subtree:!0});function t(e){const a={};return e.integrity&&(a.integrity=e.integrity),e.referrerPolicy&&(a.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?a.credentials="include":e.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function c(e){if(e.ep)return;e.ep=!0;const a=t(e);fetch(e.href,a)}})();function l(n){n.innerHTML+=`<nav id="navbar">
   <a id="logo_container" href="#home_container">
-    <img src="./assets/logo_no_bg.png" id="logo" alt="Logo" />
+    <img src="./logo_no_bg.png" id="logo" alt="Logo" />
     <p id="logo_title">Colegio </br> Jesús de </br> Nazareth</p>
   </a>
   <section id="menu">
@@ -12,7 +12,7 @@
         close_small
       </span>
     </div>
-    <img src="./assets/rainbow.png" id="rainbow" alt="rainbow" />
+    <img src="./rainbow.png" id="rainbow" alt="rainbow" />
   </section>
   <div id="btn_menu">
     <span class="material-symbols-outlined">menu</span>
@@ -29,8 +29,8 @@
       <p id="title">Colegio Jesús </br> de Nazareth</h1>
     </div>
     <div id="home_img">
-      <img src="./assets/home_pic_1.jpg" class="home_pic" alt="Home Image" />
-      <img src="./assets/home_pic_2.jpg" class="home_pic" alt="Home Image" />
+      <img src="./home_pic_1.jpg" class="home_pic" alt="Home Image" />
+      <img src="./home_pic_2.jpg" class="home_pic" alt="Home Image" />
     </div>
   </div>
   <div id="history_container" class="commom_container">
@@ -43,18 +43,18 @@
       <div id="calendar">
         <div class="year">
           <h1>1990</h1>
-          <img class="pencil" src="./assets/pencil.png">
+          <img class="pencil" src="./pencil.png">
         </div>
         <div class="year">
           <h1>2024</h1>
-          <img class="pencil" src="./assets/pencil.png">
+          <img class="pencil" src="./pencil.png">
         </div>
       </div>
     </div>
   </div>
   <div id="mision_container" class="commom_container">
     <div class="mision_column wrapper">
-      <img class="star" src="./assets/star.png" alt="star" />
+      <img class="star" src="./star.png" alt="star" />
       <h1 class="title">Misión</h1>
       <p>Plantea como Misión Educativa, hacer una institución que brinde un servicio educativo de calidad, proyectado a una educación basada en valores, impulsando un aprendizaje holístico; propiciando un clima de armonía y democracia, con un equilibrio en el desarrollo de la inteligencia emocional y una comunicación de empatía.</p>
     </div>
@@ -73,4 +73,4 @@
       </p>
     </div>
   </div>
-`;l(document.querySelector("#app"));const i=document.querySelector("#menu"),u=document.querySelector("#btn_close_menu"),o=document.querySelectorAll(".nav_link"),d=document.querySelector("#btn_menu"),m=getComputedStyle(d).display;d.addEventListener("click",()=>{i.style.display="grid",i.style.transform="translateY(0)",i.style.borderRadius="0 0 200px 200px",setTimeout(()=>{i.style.borderRadius="0 0 50px 50px"},300)});u.addEventListener("click",()=>{i.style.borderRadius="0 0 200px 200px",setTimeout(()=>{i.style.transform="translateY(-100%)"},400)});function p(s,n,t){setTimeout(()=>{s.style.transform="translateY(0)"},100),setTimeout(()=>{n.style.transform="translateY(0)"},150),setTimeout(()=>{t.style.transform="translateY(0)"},200)}p(o[0],o[1],o[2]);o.forEach(s=>{s.addEventListener("click",()=>{i.style.borderRadius="0 0 200px 200px",setTimeout(()=>{m==="none"?i.style.transform="translateY(0)":i.style.transform="translateY(-100%)"},400)})});
+`;l(document.querySelector("#app"));const i=document.querySelector("#menu"),u=document.querySelector("#btn_close_menu"),o=document.querySelectorAll(".nav_link"),d=document.querySelector("#btn_menu"),m=getComputedStyle(d).display;d.addEventListener("click",()=>{i.style.display="grid",i.style.transform="translateY(0)",i.style.borderRadius="0 0 200px 200px",setTimeout(()=>{i.style.borderRadius="0 0 50px 50px"},300)});u.addEventListener("click",()=>{i.style.borderRadius="0 0 200px 200px",setTimeout(()=>{i.style.transform="translateY(-100%)"},400)});function p(n,s,t){setTimeout(()=>{n.style.transform="translateY(0)"},100),setTimeout(()=>{s.style.transform="translateY(0)"},150),setTimeout(()=>{t.style.transform="translateY(0)"},200)}p(o[0],o[1],o[2]);o.forEach(n=>{n.addEventListener("click",()=>{i.style.borderRadius="0 0 200px 200px",setTimeout(()=>{m==="none"?i.style.transform="translateY(0)":i.style.transform="translateY(-100%)"},400)})});
