@@ -1,7 +1,7 @@
 export function navbar(a) {
   a.innerHTML += `<nav id="navbar">
   <a id="logo_container" href="#home_container">
-    <img src="./logo_no_bg.png" id="logo" alt="Logo" />
+    <img src="./logo_no_bg.png" id="logo" class="loader_pic" alt="Logo" />
     <p id="logo_title">Colegio </br> Jesús de </br> Nazareth</p>
   </a>
   <section id="menu">

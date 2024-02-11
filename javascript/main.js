@@ -1,9 +1,11 @@
 import { navbar } from "/javascript/navbar.js";
+import { loader } from "/javascript/loader.js";
 import "/scss/style.scss";
 import "/scss/navbar.scss";
 import "/scss/background.scss";
 import "/scss/home.scss";
 import "/scss/history.scss";
+import "/scss/loader.scss";
 
 document.querySelector("#app").innerHTML = `
   <div id="background">
@@ -17,8 +19,8 @@ document.querySelector("#app").innerHTML = `
       <p id="title">Colegio Jesús </br> de Nazareth</h1>
     </div>
     <div id="home_img">
-      <img src="./home_pic_1.jpg" class="home_pic" alt="Home Image" />
-      <img src="./home_pic_2.jpg" class="home_pic" alt="Home Image" />
+      <img src="./home_pic_1.jpg" class="home_pic loader_pic" alt="Home Image" />
+      <img src="./home_pic_2.jpg" class="home_pic loader_pic" alt="Home Image" />
     </div>
   </div>
   <div id="history_container" class="commom_container">
@@ -111,3 +113,5 @@ navLinks.forEach((link) => {
     }, 400);
   });
 });
+
+loader();
