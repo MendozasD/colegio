@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "https://jesusdenazareth.online/",
+  base: "https://mendozasd.github.io/colegio/",
 });
