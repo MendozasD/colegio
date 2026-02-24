@@ -54,6 +54,33 @@ body {
   overflow-x: hidden;
 }
 
+/* Skip to content — a11y */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--clash);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+/* Focus visible — a11y */
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
 #app {
   display: flex;
   flex-direction: column;
@@ -69,16 +96,46 @@ body {
   text-align: center;
   position: relative;
   display: inline-block;
+}
 
-  &::after {
-    content: "";
-    display: block;
-    width: 60%;
-    height: 4px;
-    background: var(--blue);
-    border-radius: 2px;
-    margin: 0.4rem auto 0;
+/* Wavy underline system — "Trazos" signature */
+.wavy-underline {
+  display: block;
+  margin: 0.4rem auto 0;
+  overflow: visible;
+}
+
+.wavy-underline--hero {
+  width: 80%;
+  max-width: 340px;
+  height: 12px;
+
+  path {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: draw 1.2s ease-out 0.3s forwards;
   }
+}
+
+.wavy-underline--section {
+  width: 60%;
+  max-width: 200px;
+  height: 8px;
+
+  path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    transition: stroke-dashoffset 0.8s ease-out;
+  }
+}
+
+/* Draw wavy line when parent reveal becomes visible */
+.reveal.visible .wavy-underline--section path {
+  stroke-dashoffset: 0;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
 }
 
 /* Glassmorphism wrapper */

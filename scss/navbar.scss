@@ -139,8 +139,9 @@
         cursor: pointer;
         margin-top: 0.5rem;
 
-        span {
-          font-size: 2rem;
+        svg {
+          width: 24px;
+          height: 24px;
           color: #fff;
         }
       }
@@ -170,14 +171,12 @@
 
       &:active { transform: scale(0.92); }
 
-      span {
-        font-size: 1.5rem;
+      svg {
+        width: 24px;
+        height: 24px;
         color: #fff;
       }
     }
   }
 
-  .material-symbols-outlined {
-    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-  }
 }

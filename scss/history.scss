@@ -1,12 +1,18 @@
 /* ── History Section ── */
 #history_container {
   padding: 5rem 2rem;
-  max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
+  background: var(--beige-dark);
+
+  .history-header,
+  .history-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
   .history-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem;
   }
 
   .history-content {
@@ -116,8 +122,9 @@
     text-align: left;
     padding: 2.5rem 2rem;
 
-    .mision-icon {
-      font-size: 2rem;
+    .section-icon {
+      width: 48px;
+      height: 48px;
       margin-bottom: 0.75rem;
       display: block;
     }
@@ -175,13 +182,14 @@
 
 /* ── School Life (replaces "EN CONSTRUCCION") ── */
 #vida_container {
-  max-width: 900px;
-  margin: 0 auto;
+  width: 100%;
   padding: 5rem 2rem;
   text-align: center;
+  background: var(--beige-dark);
 
   .vida-header {
-    margin-bottom: 2.5rem;
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
   }
 
   .vida-subtitle {
@@ -193,6 +201,8 @@
   }
 
   .vida-grid {
+    max-width: 900px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
@@ -212,9 +222,10 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
-    .vida-card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
+    .section-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 0.75rem;
       display: block;
     }
 

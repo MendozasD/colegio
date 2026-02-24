@@ -1,5 +1,6 @@
 import { navbar } from "/javascript/navbar.js";
 import { loader } from "/javascript/loader.js";
+import { iconMission, iconVision, iconAcademic, iconArt, iconCommunity, wavyHero, wavySection, iconArrowDown } from "/javascript/icons.js";
 import "/scss/style.scss";
 import "/scss/navbar.scss";
 import "/scss/background.scss";
@@ -18,10 +19,21 @@ document.querySelector("#app").innerHTML = `
     <div id="home_title">
       <p id="welcome">Bienvenidos al</p>
       <p id="title">Colegio Jesús<br>de Nazareth</p>
+      ${wavyHero}
+      <a href="#history_container" class="hero-cta">Conócenos ${iconArrowDown}</a>
     </div>
     <div id="home_img">
-      <img src="./home_pic_1.jpg" class="home_pic loader_pic" alt="Estudiantes del Colegio Jesús de Nazareth" />
-      <img src="./home_pic_2.jpg" class="home_pic loader_pic" alt="Actividades escolares" />
+      <picture>
+        <source srcset="./home_pic_1.webp" type="image/webp" />
+        <img src="./home_pic_1.jpg" class="home_pic loader_pic" alt="Estudiantes del Colegio Jesús de Nazareth" />
+      </picture>
+      <picture>
+        <source srcset="./home_pic_2.webp" type="image/webp" />
+        <img src="./home_pic_2.jpg" class="home_pic loader_pic" alt="Actividades escolares" />
+      </picture>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
     </div>
   </section>
 
@@ -30,7 +42,7 @@ document.querySelector("#app").innerHTML = `
   <!-- Historia -->
   <section id="history_container">
     <div class="history-header reveal">
-      <h1 class="title">Nuestra Historia</h1>
+      <h1 class="title">Nuestra Historia${wavySection}</h1>
     </div>
     <div class="history-content">
       <div class="history-block wrapper reveal">
@@ -79,15 +91,15 @@ document.querySelector("#app").innerHTML = `
   <section id="stats_container">
     <div class="stats-grid">
       <div class="stat reveal">
-        <div class="stat-number">210</div>
+        <div class="stat-number" data-value="210" data-suffix="">0</div>
         <div class="stat-label">Estudiantes</div>
       </div>
       <div class="stat reveal">
-        <div class="stat-number">24+</div>
+        <div class="stat-number" data-value="24" data-suffix="+">0</div>
         <div class="stat-label">Años de Servicio</div>
       </div>
       <div class="stat reveal">
-        <div class="stat-number">100%</div>
+        <div class="stat-number" data-value="100" data-suffix="%">0</div>
         <div class="stat-label">Dedicación</div>
       </div>
     </div>
@@ -98,15 +110,15 @@ document.querySelector("#app").innerHTML = `
   <!-- Misión y Visión -->
   <section id="mision_container">
     <div class="mision-header reveal">
-      <h1 class="title">Misión y Visión</h1>
+      <h1 class="title">Misión y Visión${wavySection}</h1>
     </div>
     <div class="mision_column wrapper reveal">
-      <span class="mision-icon">🎯</span>
+      ${iconMission}
       <h2>Misión</h2>
       <p>Plantea como Misión Educativa, hacer una institución que brinde un servicio educativo de calidad, proyectado a una educación basada en valores, impulsando un aprendizaje holístico; propiciando un clima de armonía y democracia, con un equilibrio en el desarrollo de la inteligencia emocional y una comunicación de empatía.</p>
     </div>
     <div class="mision_column wrapper reveal">
-      <span class="mision-icon">🌟</span>
+      ${iconVision}
       <h2>Visión</h2>
       <p>La Institución Educativa Colegio Jesús de Nazareth busca mejorar la calidad educativa con un enfoque humanista, cognitivo y valorativo. Promovemos la educación democrática, para el trabajo y basada en valores. Formamos alumnos creativos, críticos, emprendedores e innovadores, con equilibrio emocional, espíritu solidario, justicia, paz y autoestima elevada. Nos comprometemos con el cambio social a través de la excelencia educativa.</p>
     </div>
@@ -117,22 +129,22 @@ document.querySelector("#app").innerHTML = `
   <!-- Vida Escolar (replaces EN CONSTRUCCION) -->
   <section id="vida_container">
     <div class="vida-header reveal">
-      <h1 class="title">Vida Escolar</h1>
+      <h1 class="title">Vida Escolar${wavySection}</h1>
       <p class="vida-subtitle">Formamos ciudadanos íntegros a través de experiencias que van más allá del aula.</p>
     </div>
     <div class="vida-grid">
       <div class="vida-card reveal">
-        <span class="vida-card-icon">📚</span>
+        ${iconAcademic}
         <h3>Excelencia Académica</h3>
         <p>Programa educativo integral con enfoque en valores, pensamiento crítico y creatividad desde preescolar hasta primaria.</p>
       </div>
       <div class="vida-card reveal">
-        <span class="vida-card-icon">🎨</span>
+        ${iconArt}
         <h3>Arte y Cultura</h3>
         <p>Actividades artísticas y culturales que desarrollan la sensibilidad, expresión y el talento de nuestros estudiantes.</p>
       </div>
       <div class="vida-card reveal">
-        <span class="vida-card-icon">🤝</span>
+        ${iconCommunity}
         <h3>Comunidad</h3>
         <p>Más de 20 años siendo parte fundamental del Barrio Cantilito, formando lazos de solidaridad y compromiso social.</p>
       </div>
@@ -174,18 +186,34 @@ const menu = document.querySelector("#menu");
 const btnClose = document.querySelector("#btn_close_menu");
 const btnMenu = document.querySelector("#btn_menu");
 
-btnMenu.addEventListener("click", () => {
+function openMenu() {
   menu.classList.add("menu-open");
+  btnMenu.setAttribute("aria-expanded", "true");
+}
+
+function closeMenu() {
+  menu.classList.remove("menu-open");
+  btnMenu.setAttribute("aria-expanded", "false");
+}
+
+btnMenu.addEventListener("click", openMenu);
+btnMenu.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    openMenu();
+  }
 });
 
-btnClose.addEventListener("click", () => {
-  menu.classList.remove("menu-open");
+btnClose.addEventListener("click", closeMenu);
+btnClose.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    closeMenu();
+  }
 });
 
 document.querySelectorAll(".nav_link").forEach((link) => {
-  link.addEventListener("click", () => {
-    menu.classList.remove("menu-open");
-  });
+  link.addEventListener("click", closeMenu);
 });
 
 // ── Scroll Reveal ──
@@ -204,6 +232,55 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll(".reveal").forEach((el) => {
   revealObserver.observe(el);
 });
+
+// ── Stat Counter Animation ──
+const statsContainer = document.querySelector("#stats_container");
+let statsCounted = false;
+
+function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+function animateCounters() {
+  if (statsCounted) return;
+  statsCounted = true;
+
+  document.querySelectorAll(".stat-number[data-value]").forEach((el) => {
+    const target = parseInt(el.dataset.value, 10);
+    const suffix = el.dataset.suffix || "";
+    const duration = 1500;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const current = Math.round(easeOutCubic(progress) * target);
+      el.textContent = current + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  });
+}
+
+const statsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.3 }
+);
+
+if (statsContainer) {
+  statsObserver.observe(statsContainer);
+}
 
 // ── Loader ──
 loader();

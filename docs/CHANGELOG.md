@@ -1,5 +1,95 @@
 # Changelog
 
+## 2026-02-24 — Push to EXCELLENT (branch: portfolio-refresh)
+
+Second pass targeting 79+/90. Addresses Design Critic feedback: emoji icons (generic), no hero CTA, unoptimized images (~2.5MB), no a11y, no visual signature.
+
+### Image Optimization (saved ~1.4MB)
+- **Deleted `public/pencil.png`** (358K) and **`public/star.png`** (621K) — not referenced anywhere
+- Converted `home_pic_1.jpg`, `home_pic_2.jpg`, `logo_no_bg.png` to **WebP** with `<picture>` fallback
+- Resized `rainbow.png` from 3000x1601 → 600w before WebP conversion (528K → 11K)
+- Added `loading="lazy"` to below-fold images (rainbow menu decoration)
+- Logo: 462K PNG → 61K WebP | Rainbow: 528K → 11K WebP
+
+### Custom SVG Icons (replaces emoji)
+- Created **`javascript/icons.js`** with 5 hand-drawn-style SVG icons:
+  - **Mission**: compass with heart center (--blue stroke)
+  - **Vision**: open eye with radiating lines and sparkle (--blue stroke)
+  - **Academic**: open book with seedling growing (--green stroke)
+  - **Art**: hand with paintbrush + paint swirl (--red stroke)
+  - **Community**: cupped hands holding house with heart (--yellow stroke)
+- SVG specs: `viewBox="0 0 48 48"`, stroke-width 2, linecap round, fill none
+- All SVGs have `aria-hidden="true"` (adjacent heading provides label)
+- Unified icon styling under `.section-icon` class (48x48px)
+
+### Removed Material Symbols Font (~200KB saved)
+- Replaced `menu` and `close_small` Material Symbols with inline SVG hamburger/close icons
+- Removed Google Fonts `<link>` for Material Symbols Outlined from `index.html`
+- Removed `.material-symbols-outlined` CSS rule from `navbar.scss`
+
+### "Trazos" Signature — Wavy Underlines
+- Hero title gets a **yellow wavy underline** with `stroke-dashoffset` draw-in animation on page load (1.2s ease-out)
+- Section `.title::after` bars replaced with **blue wavy SVG underlines** that draw on scroll-reveal
+- Wavy paths are subtle (3-4px amplitude) — child's crayon aesthetic matching Telma cursive
+- `@keyframes draw` animation in `style.scss`
+- SVG paths in `icons.js`: `wavyHero` (300×12) and `wavySection` (200×8)
+
+### Hero CTA + Scroll Indicator
+- **"Conócenos"** pill button (blue bg, white text, Clash Grotesk) with down-arrow SVG
+- Hover: lightens to `--blue-light`, lifts 2px, arrow bounces down
+- Placed after `#title` in hero section, links to `#history_container`
+- Scroll-line indicator at bottom of hero (CSS pulse animation, 2s loop)
+- CTA shrinks on tablet, scroll indicator hidden on mobile
+
+### Alternating Section Backgrounds
+- `#history_container` and `#vida_container` get `background: var(--beige-dark)` full-width
+- Inner content constrained at `max-width: 900px`
+- Visual rhythm: beige → beige-dark → beige → blue → beige → beige-dark → dark footer
+- Glassmorphism `.wrapper` cards look good on darker background (tested)
+
+### Accessibility
+- **Skip-to-content link**: `<a href="#history_container" class="skip-to-content">Ir al contenido principal</a>` as first child of `<body>`
+- Visually hidden, appears on `:focus` with blue background
+- **`:focus-visible`** global outline: 3px solid --blue, 2px offset
+- Hamburger/close buttons: `role="button"`, `tabindex="0"`, `aria-label` (Spanish)
+- `aria-expanded` toggles on hamburger button when menu opens/closes
+- Keyboard support: Enter/Space triggers menu open/close
+
+### Stat Counter Animation
+- IntersectionObserver on `#stats_container` triggers count-up at 30% threshold
+- Numbers count from 0 → target over 1.5s with **ease-out cubic** easing
+- `data-value` and `data-suffix` attributes: "210" counts normally, "24" → "24+", "100" → "100%"
+- Single trigger — counts once and stops observing
+
+### Files Created
+- `javascript/icons.js` — 5 section icons, 2 wavy paths, hamburger/close SVGs, down-arrow
+
+### Files Modified
+- `index.html` — removed Material Symbols link, added skip-to-content
+- `javascript/main.js` — WebP picture elements, SVG icon imports, hero CTA, wavy underlines, a11y handlers, counter animation
+- `javascript/navbar.js` — inline SVG menu icons, WebP logo/rainbow, aria attributes
+- `scss/style.scss` — wavy underline system, skip-to-content styles, :focus-visible, @keyframes draw
+- `scss/home.scss` — hero CTA button, scroll indicator, hero position: relative
+- `scss/history.scss` — .section-icon class (replaces emoji), beige-dark backgrounds on history/vida, inner content max-width
+- `scss/navbar.scss` — SVG icon sizing (replaces material-symbols span), removed .material-symbols-outlined rule
+
+### Files Deleted
+- `public/pencil.png` (358K)
+- `public/star.png` (621K)
+
+### Files Added
+- `public/home_pic_1.webp` (260K)
+- `public/home_pic_2.webp` (165K)
+- `public/logo_no_bg.webp` (61K)
+- `public/rainbow.webp` (11K)
+
+### Build
+- `npm run build` — 14.6KB CSS + 17.1KB JS (gzip: 3.5KB + 5.2KB)
+- Tested at 1280px desktop, 768px tablet, 375px mobile — all pass
+- Zero console errors
+
+---
+
 ## 2026-02-24 — Portfolio Refresh (branch: portfolio-refresh)
 
 Major redesign to bring the site to portfolio-ready quality. Based on Design Critic audit (43/90 -> target 79+).
