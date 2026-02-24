@@ -83,4 +83,4 @@ npm run deploy     # Build + firebase deploy
 
 ## Project Context
 
-Built as a portfolio piece by [David Mendoza](https://davidmendoza.ch) for a family-run school in Colombia. The design prioritizes warmth, accessibility, and performance — reflecting both the school's community values and modern web standards.
+Built as a portfolio piece by [David Mendoza](https://davidmendoza.ch) for a school in Colombia. The design prioritizes warmth, accessibility, and performance — reflecting both the school's community values and modern web standards.
