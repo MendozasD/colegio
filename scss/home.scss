@@ -1,72 +1,181 @@
 #home_container {
   z-index: 4;
-  width: 98vw;
+  width: 100%;
   display: flex;
   align-items: center;
-  height: 100svh;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 100px 2rem 4rem;
+  gap: 3rem;
+  position: relative;
 }
 
 #home_title {
-  width: calc(45vw);
-  padding: 0 1rem;
-  color: var(--gray);
-  bottom: 0;
+  flex: 1;
+  max-width: 500px;
   text-align: end;
+
+  #welcome {
+    font-size: 2rem;
+    font-family: var(--telma);
+    color: var(--text-muted);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
   #title {
-    font-size: 5rem;
-    font-weight: 500;
-    margin: 0;
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    font-weight: 600;
     font-family: var(--clash);
     line-height: 1;
+    color: var(--text);
   }
-  #welcome {
-    font-size: 2.5rem;
-    margin: 0;
-    font-family: var(--telma);
-    line-height: 1;
+}
+
+/* Hero CTA button */
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--clash);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(74, 144, 196, 0.3);
+
+  svg {
+    transition: transform 0.3s ease;
   }
+
+  &:hover {
+    background: var(--blue-light);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(74, 144, 196, 0.4);
+
+    svg { transform: translateY(2px); }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-line {
+  width: 2px;
+  height: 32px;
+  background: var(--text-muted);
+  border-radius: 1px;
+  opacity: 0.4;
+  animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.15; transform: scaleY(0.6); }
+  50% { opacity: 0.5; transform: scaleY(1); }
 }
 
 #home_img {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 65vh;
-  width: 50%;
+  gap: 1rem;
+  flex: 1;
+  max-width: 500px;
+
   .home_pic {
-    border-radius: 30px;
-    height: 60%;
-    opacity: 0.8;
+    border-radius: 20px;
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease;
+
     &:first-child {
-      rotate: 5deg;
+      transform: rotate(2deg);
+      &:hover { transform: rotate(0deg) scale(1.02); }
     }
     &:last-child {
-      rotate: -5deg;
+      transform: rotate(-2deg);
+      &:hover { transform: rotate(0deg) scale(1.02); }
     }
   }
 }
 
-@media all and (max-width: 500px) {
+/* ── Tablet ── */
+@media (max-width: 768px) {
+  #home_container {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 100px;
+    min-height: auto;
+    gap: 2rem;
+  }
+
   #home_title {
-    position: relative;
-    width: calc(100vw - 2rem);
-    text-align: start;
-    #title {
-      font-size: 3.5rem;
+    text-align: center;
+    max-width: none;
+  }
+
+  .hero-cta {
+    font-size: 0.9rem;
+    padding: 0.65rem 1.5rem;
+  }
+
+  .scroll-indicator { display: none; }
+
+  #home_img {
+    max-width: 100%;
+    flex-direction: row;
+    gap: 1rem;
+
+    .home_pic {
+      width: 48%;
+      max-height: 220px;
     }
   }
+}
+
+/* ── Mobile ── */
+@media (max-width: 500px) {
+  #home_container {
+    padding: 90px 1.25rem 2rem;
+  }
+
+  #home_title {
+    #title {
+      font-size: 2.8rem;
+    }
+    #welcome {
+      font-size: 1.5rem;
+    }
+  }
+
   #home_img {
-    position: absolute;
-    inset: 0;
-    height: auto;
-    width: auto;
-    align-items: center;
-    justify-content: space-around;
-    overflow: hidden;
-    z-index: -2;
+    flex-direction: column;
+
     .home_pic {
-      height: 25%;
+      width: 100%;
+      max-height: 200px;
+      &:first-child { transform: rotate(1deg); }
+      &:last-child { transform: rotate(-1deg); }
     }
   }
 }

@@ -1,24 +1,28 @@
 :root {
-  --blue: #65b0e2;
-  --green: #adf7b6;
-  --beige: #fffce9;
-  --yellow: #ffee93;
-  --red: #ffbf9f;
-  --gray: rgb(113, 113, 113);
+  /* Palette — warm Colombian school */
+  --blue: #4a90c4;
+  --blue-light: #65b0e2;
+  --green: #7ecb8a;
+  --green-light: #adf7b6;
+  --beige: #fdf8ec;
+  --beige-dark: #f0e8d4;
+  --yellow: #f5c842;
+  --red: #e07850;
+  --coral: #ffbf9f;
+  --text: #3d3529;
+  --text-muted: #6b5e50;
+  --border: rgba(61, 53, 41, 0.12);
 
-  --boska: "Boska", serif;
-  --clash: "Clash Grotesk", sans-serif;
+  /* Fonts */
+  --boska: "Boska", Georgia, serif;
+  --clash: "Clash Grotesk", system-ui, sans-serif;
   --telma: "Telma", cursive;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+
+  font-family: var(--clash);
+  line-height: 1.6;
   font-weight: 400;
-  margin: 0;
-  padding: 0;
-
-  color-scheme: light dark;
-  color: var(--gray);
+  color: var(--text);
   background-color: var(--beige);
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,21 +30,55 @@
   scroll-behavior: smooth;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-a:hover {
-  color: #535bf2;
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  &:hover {
+    color: var(--red);
+  }
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Skip to content — a11y */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--clash);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+/* Focus visible — a11y */
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
 }
 
 #app {
@@ -48,28 +86,96 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 100px;
 }
 
+/* Section titles */
 .title {
   font-family: var(--clash);
-  color: var(--gray);
+  font-weight: 600;
+  color: var(--text);
   text-align: center;
-  text-decoration: underline var(--blue) 5px;
+  position: relative;
+  display: inline-block;
 }
 
-.italic {
-  font-style: italic;
-  font-family: var(--telma);
+/* Wavy underline system — "Trazos" signature */
+.wavy-underline {
+  display: block;
+  margin: 0.4rem auto 0;
+  overflow: visible;
 }
 
+.wavy-underline--hero {
+  width: 80%;
+  max-width: 340px;
+  height: 12px;
+
+  path {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: draw 1.2s ease-out 0.3s forwards;
+  }
+}
+
+.wavy-underline--section {
+  width: 60%;
+  max-width: 200px;
+  height: 8px;
+
+  path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    transition: stroke-dashoffset 0.8s ease-out;
+  }
+}
+
+/* Draw wavy line when parent reveal becomes visible */
+.reveal.visible .wavy-underline--section path {
+  stroke-dashoffset: 0;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Glassmorphism wrapper */
 .wrapper {
-  // GLASSMORPHISM
-  padding: 1.5rem;
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Scroll reveal utility */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section spacing */
+.section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+/* Section divider */
+.section-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--yellow), var(--red));
+  border: none;
+  border-radius: 2px;
+  margin: 0 auto;
+  display: block;
 }
